@@ -30,10 +30,20 @@ product_data = {
 }
 
 if st.button("Predict", type='primary'):
-    response = requests.post("https://lupper-superkart-backend.onrender.com/v1/predict", json=product_data)
-    if response.status_code == 200:
-        result = response.json()
-        predicted_sales = result["Sales"]
-        st.write(f"Predicted Product Store Sales Total: \u20b9{predicted_sales:.2f}")
-    else:
-        st.error("Error in API request")
+    with st.spinner("Waking up the model... this can take up to a minute on first request"):
+        try:
+            response = requests.post(
+                "https://lupper-superkart-backend.onrender.com/v1/predict",
+                json=product_data,
+                timeout=90
+            )
+            if response.status_code == 200:
+                result = response.json()
+                predicted_sales = result["Sales"]
+                st.write(f"Predicted Product Store Sales Total: \u20b9{predicted_sales:.2f}")
+            else:
+                st.error(f"Error in API request (status {response.status_code})")
+        except requests.exceptions.Timeout:
+            st.error("Request timed out. The backend may be waking up — try again in a moment.")
+        except requests.exceptions.RequestException as e:
+            st.error(f"Could not reach the backend: {e}")
