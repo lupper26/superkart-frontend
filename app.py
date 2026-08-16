@@ -1,9 +1,10 @@
 # NEW ###########################
 import streamlit as st
+from datetime import datetime
 import requests
 
 st.title("SuperKart Retail Sales Forecasting Dashboard")
-
+st.write(f"Current date and time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 # Input fields for product and store data
 Product_Weight = st.number_input("Product Weight", min_value=0.0, value=12.66)
 Product_Sugar_Content = st.selectbox("Product Sugar Content", ["Low Sugar", "Regular", "No Sugar"])
