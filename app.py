@@ -14,8 +14,8 @@ if "backend_warmed" not in st.session_state:
         except requests.exceptions.RequestException:
             st.session_state["backend_warmed"] = False
 
-st.header("SuperKart Retail Sales Forecasting Dashboard")
-st.write(f"Current date-time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+st.subheader("SuperKart Retail Sales Forecasting Dashboard")
+st.write(f"Current date&time: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 # Input fields for product and store data
 Product_Weight = st.number_input("Product Weight", min_value=0.0, value=12.66)
 Product_Sugar_Content = st.selectbox("Product Sugar Content", ["Low Sugar", "Regular", "No Sugar"])
