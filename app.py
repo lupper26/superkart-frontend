@@ -18,7 +18,7 @@ if "backend_warmed" not in st.session_state:
 st.subheader("SuperKart Retail Sales Forecasting Dashboard")
 
 eastern = ZoneInfo("America/New_York")
-st.write(f"Current date & time (EST): {datetime.now(eastern).strftime('%Y-%m-%d %H:%M:%S')}")
+st.write(f"Current date - time ({datetime.now(eastern).strftime('%Z')}): {datetime.now(eastern).strftime('%Y-%m-%d %H:%M:%S')}")
 
 ZoneInfo("America/New_York") is the right choice over something like "US/Eastern" — it's
 # Input fields for product and store data
