@@ -48,7 +48,7 @@ if st.button("Predict", type='primary'):
             if response.status_code == 200:
                 result = response.json()
                 predicted_sales = result["Sales"]
-                st.success(label="Predicted Product Store Sales Total", value=f"\u20b9{predicted_sales:,.2f}")
+                st.success(f"Predicted Product Store Sales Total: \u20b9{predicted_sales:,.2f}")
             else:
                 st.error(f"Error in API request (status {response.status_code})")
         except requests.exceptions.RequestException as e:
