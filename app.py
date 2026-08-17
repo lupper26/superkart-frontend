@@ -1,4 +1,3 @@
-# NEW ###########################
 import streamlit as st
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -18,9 +17,8 @@ if "backend_warmed" not in st.session_state:
 st.subheader("SuperKart Retail Sales Forecasting Dashboard")
 
 eastern = ZoneInfo("America/New_York")
-st.write(f"Current date - time ({datetime.now(eastern).strftime('%Z')}): {datetime.now(eastern).strftime('%Y-%m-%d %H:%M:%S')}")
+st.write(f"Current date & time (Eastern): {datetime.now(eastern).strftime('%Y-%m-%d %H:%M:%S')}")
 
-ZoneInfo("America/New_York") is the right choice over something like "US/Eastern" — it's
 # Input fields for product and store data
 Product_Weight = st.number_input("Product Weight", min_value=0.0, value=12.66)
 Product_Sugar_Content = st.selectbox("Product Sugar Content", ["Low Sugar", "Regular", "No Sugar"])
